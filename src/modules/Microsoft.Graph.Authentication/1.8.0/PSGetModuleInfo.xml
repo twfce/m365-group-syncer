@@ -1,0 +1,161 @@
+<Objs Version="1.1.0.1" xmlns="http://schemas.microsoft.com/powershell/2004/04">
+  <Obj RefId="0">
+    <TN RefId="0">
+      <T>Microsoft.PowerShell.Commands.PSRepositoryItemInfo</T>
+      <T>System.Management.Automation.PSCustomObject</T>
+      <T>System.Object</T>
+    </TN>
+    <MS>
+      <S N="Name">Microsoft.Graph.Authentication</S>
+      <S N="Version">1.8.0</S>
+      <S N="Type">Module</S>
+      <S N="Description">Microsoft Graph PowerShell Authentication Module.</S>
+      <S N="Author">Microsoft</S>
+      <S N="CompanyName">msgraph-sdk-powershell</S>
+      <S N="Copyright">© Microsoft Corporation. All rights reserved.</S>
+      <DT N="PublishedDate">2021-10-27T17:03:01+02:00</DT>
+      <Nil N="InstalledDate" />
+      <Nil N="UpdatedDate" />
+      <URI N="LicenseUri">https://aka.ms/devservicesagreement</URI>
+      <URI N="ProjectUri">https://github.com/microsoftgraph/msgraph-sdk-powershell</URI>
+      <URI N="IconUri">https://raw.githubusercontent.com/microsoftgraph/msgraph-sdk-powershell/master/documentation/images/graph_color256.png</URI>
+      <Obj N="Tags" RefId="1">
+        <TN RefId="1">
+          <T>System.Object[]</T>
+          <T>System.Array</T>
+          <T>System.Object</T>
+        </TN>
+        <LST>
+          <S>Microsoft</S>
+          <S>Office365</S>
+          <S>Graph</S>
+          <S>PowerShell</S>
+          <S>Teams</S>
+          <S>Outlook</S>
+          <S>OneDrive</S>
+          <S>AzureAD</S>
+          <S>GraphAPI</S>
+          <S>Productivity</S>
+          <S>SharePoint</S>
+          <S>Intune</S>
+          <S>SDK</S>
+          <S>PSEdition_Core</S>
+          <S>PSEdition_Desktop</S>
+        </LST>
+      </Obj>
+      <Obj N="Includes" RefId="2">
+        <TN RefId="2">
+          <T>System.Collections.Hashtable</T>
+          <T>System.Object</T>
+        </TN>
+        <DCT>
+          <En>
+            <S N="Key">Workflow</S>
+            <Obj N="Value" RefId="3">
+              <TNRef RefId="1" />
+              <LST />
+            </Obj>
+          </En>
+          <En>
+            <S N="Key">Function</S>
+            <Obj N="Value" RefId="4">
+              <TNRef RefId="1" />
+              <LST>
+                <S>Find-MgGraphCommand</S>
+                <S>Find-MgGraphPermission</S>
+              </LST>
+            </Obj>
+          </En>
+          <En>
+            <S N="Key">DscResource</S>
+            <Ref N="Value" RefId="3" />
+          </En>
+          <En>
+            <S N="Key">Cmdlet</S>
+            <Obj N="Value" RefId="5">
+              <TNRef RefId="1" />
+              <LST>
+                <S>Connect-MgGraph</S>
+                <S>Disconnect-MgGraph</S>
+                <S>Get-MgContext</S>
+                <S>Get-MgProfile</S>
+                <S>Select-MgProfile</S>
+                <S>Invoke-MgGraphRequest</S>
+                <S>Add-MgEnvironment</S>
+                <S>Get-MgEnvironment</S>
+                <S>Remove-MgEnvironment</S>
+                <S>Set-MgEnvironment</S>
+              </LST>
+            </Obj>
+          </En>
+          <En>
+            <S N="Key">Command</S>
+            <Obj N="Value" RefId="6">
+              <TNRef RefId="1" />
+              <LST>
+                <S>Connect-MgGraph</S>
+                <S>Disconnect-MgGraph</S>
+                <S>Get-MgContext</S>
+                <S>Get-MgProfile</S>
+                <S>Select-MgProfile</S>
+                <S>Invoke-MgGraphRequest</S>
+                <S>Add-MgEnvironment</S>
+                <S>Get-MgEnvironment</S>
+                <S>Remove-MgEnvironment</S>
+                <S>Set-MgEnvironment</S>
+                <S>Find-MgGraphCommand</S>
+                <S>Find-MgGraphPermission</S>
+              </LST>
+            </Obj>
+          </En>
+          <En>
+            <S N="Key">RoleCapability</S>
+            <Ref N="Value" RefId="3" />
+          </En>
+        </DCT>
+      </Obj>
+      <Nil N="PowerShellGetFormatVersion" />
+      <S N="ReleaseNotes">See https://aka.ms/GraphPowerShell-Release.</S>
+      <Obj N="Dependencies" RefId="7">
+        <TNRef RefId="1" />
+        <LST />
+      </Obj>
+      <S N="RepositorySourceLocation">https://www.powershellgallery.com/api/v2</S>
+      <S N="Repository">PSGallery</S>
+      <S N="PackageManagementProvider">NuGet</S>
+      <Obj N="AdditionalMetadata" RefId="8">
+        <TN RefId="3">
+          <T>System.Management.Automation.PSCustomObject</T>
+          <T>System.Object</T>
+        </TN>
+        <MS>
+          <S N="copyright">© Microsoft Corporation. All rights reserved.</S>
+          <S N="description">Microsoft Graph PowerShell Authentication Module.</S>
+          <S N="requireLicenseAcceptance">True</S>
+          <S N="releaseNotes">See https://aka.ms/GraphPowerShell-Release.</S>
+          <S N="isLatestVersion">True</S>
+          <S N="isAbsoluteLatestVersion">True</S>
+          <S N="versionDownloadCount">60699</S>
+          <S N="downloadCount">1834038</S>
+          <S N="packageSize">1911895</S>
+          <S N="published">27.10.2021 17:03:01 +02:00</S>
+          <S N="created">27.10.2021 17:03:01 +02:00</S>
+          <S N="lastUpdated">17.11.2021 19:23:11 +01:00</S>
+          <S N="tags">Microsoft Office365 Graph PowerShell Teams Outlook OneDrive AzureAD GraphAPI Productivity SharePoint Intune SDK PSEdition_Core PSEdition_Desktop PSCmdlet_Connect-MgGraph PSCommand_Connect-MgGraph PSCmdlet_Disconnect-MgGraph PSCommand_Disconnect-MgGraph PSCmdlet_Get-MgContext PSCommand_Get-MgContext PSCmdlet_Get-MgProfile PSCommand_Get-MgProfile PSCmdlet_Select-MgProfile PSCommand_Select-MgProfile PSCmdlet_Invoke-MgGraphRequest PSCommand_Invoke-MgGraphRequest PSCmdlet_Add-MgEnvironment PSCommand_Add-MgEnvironment PSCmdlet_Get-MgEnvironment PSCommand_Get-MgEnvironment PSCmdlet_Remove-MgEnvironment PSCommand_Remove-MgEnvironment PSCmdlet_Set-MgEnvironment PSCommand_Set-MgEnvironment PSIncludes_Cmdlet PSFunction_Find-MgGraphCommand PSCommand_Find-MgGraphCommand PSFunction_Find-MgGraphPermission PSCommand_Find-MgGraphPermission PSIncludes_Function</S>
+          <S N="developmentDependency">False</S>
+          <S N="updated">2021-11-17T19:23:11Z</S>
+          <S N="NormalizedVersion">1.8.0</S>
+          <S N="Authors">Microsoft</S>
+          <S N="IsPrerelease">false</S>
+          <S N="ItemType">Module</S>
+          <S N="FileList">Microsoft.Graph.Authentication.nuspec|Microsoft.Graph.Authentication.format.ps1xml|Microsoft.Graph.Authentication.psm1|Microsoft.Graph.Authentication.psd1|Microsoft.Graph.Authentication.dll|Microsoft.Graph.Authentication.Core.dll|Microsoft.Graph.Core.dll|StartupScripts\ExportCustomCommands.ps1|StartupScripts\InitializeAssemblyResolver.ps1|custom\common\MgCommandMetadata.json|custom\common\MSGraphServicePrincipalPermissions.json|custom\common\Permissions.ps1|custom\Find-MgGraphCommand.ps1|custom\Find-MgGraphPermission.ps1|custom\common\GraphCommand.ps1|custom\common\GraphUri.ps1|Dependencies\Newtonsoft.Json.dll|Dependencies\Microsoft.Graph.Auth.dll|Dependencies\Microsoft.IdentityModel.JsonWebTokens.dll|Dependencies\Microsoft.IdentityModel.Tokens.dll|Dependencies\Microsoft.IdentityModel.Logging.dll|Dependencies\System.IdentityModel.Tokens.Jwt.dll|Dependencies\Core\Microsoft.Identity.Client.dll|Dependencies\Core\System.Security.Cryptography.ProtectedData.dll|Dependencies\Desktop\Microsoft.Identity.Client.dll|Dependencies\Desktop\System.Security.Cryptography.ProtectedData.dll|.signature.p7s</S>
+          <S N="GUID">883916f2-9184-46ee-b1f8-b6a2fb784cee</S>
+          <S N="PowerShellVersion">5.1</S>
+          <S N="DotNetFrameworkVersion">4.7.2</S>
+          <S N="CompanyName">Microsoft</S>
+        </MS>
+      </Obj>
+      <S N="InstalledLocation">/home/twfce/repos/m365-group-syncer/src/modules/Microsoft.Graph.Authentication/1.8.0</S>
+    </MS>
+  </Obj>
+</Objs>
