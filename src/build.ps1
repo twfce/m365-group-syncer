@@ -1,5 +1,5 @@
 $requiredModules = @(
-    "Az.Storage",
+    "Az"
     "AzTable",
     "Microsoft.Graph.Authentication"
 )

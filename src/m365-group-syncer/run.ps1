@@ -11,4 +11,16 @@ if ($Timer.IsPastDue) {
 
 # Write an information log with the current time.
 Write-Host "PowerShell timer trigger function ran! TIME: $currentUTCtime"
-Write-Host $env:AzureWebJobsStorage
+
+Get-Module
+#$storageTableCtx = New-AzStorageContext -ConnectionString $env:AzureWebJobsStorage
+#$storageTableCtx
+
+<#
+try {
+    Get-AzStorageTable -Name $env:GROUP_MAPPINGS_TABLE_NAME -Context $storageTableCtx
+}
+catch {
+    New-AzStorageContext $env:GROUP_MAPPINGS_TABLE_NAME -Context $storageTableCtx
+}
+#>
