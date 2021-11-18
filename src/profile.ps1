@@ -21,12 +21,15 @@
 
 # You can also define functions or aliases that can be referenced in any of your PowerShell functions.
 
-# Import required modules
-Import-Module Az.Storage
-Import-Module AzTable
-
 # Import library
 Get-ChildItem -Path "$PSScriptRoot\lib" -Filter "*.psm1" | Foreach-Object {
     Write-Host "Importing $($_.Name)"
     Import-Module $_.FullName -Force -DisableNameChecking
+}
+
+if ($env:AUTH_CERTIFICATE_FILE) {
+    $authCert = Prepare-Certificate -FilePath $env:AUTH_CERTIFICATE_FILE
+}
+elseif ($env:AUTH_KEYVAULT_NAME -and $env:AUTH_KEYVAULT_CERTNAME) {
+    $authCert = $null
 }

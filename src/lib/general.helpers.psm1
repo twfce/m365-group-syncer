@@ -23,16 +23,24 @@ function Prepare-Certificate {
                 [System.Runtime.InteropServices.Marshal]::ZeroFreeBSTR($ssPtr)
             }
             $certToImport = [Convert]::FromBase64String($secretValueText) 
+        }
+
+        if ($PSVersionTable.Platform -ne 'Unix' -and -not $PSBoundParameters.ContainsKey("FilePath")) {
+            $x509Cert = new-object System.Security.Cryptography.X509Certificates.X509Certificate2
         }        
-        
-        $x509Cert = new-object System.Security.Cryptography.X509Certificates.X509Certificate2
     }
     process {
         if (-Not $certToImport) {
             throw "No certificate to import"
         }
 
-        $x509Cert.Import($certToImport, "", "Exportable,PersistKeySet")
+        if ($PSVersionTable.Platform -ne 'Unix' -and -not $PSBoundParameters.ContainsKey("FilePath")) {
+            $x509Cert.Import($certToImport, "", "Exportable,PersistKeySet")
+        }
+        else {
+            $x509Cert = new-object System.Security.Cryptography.X509Certificates.X509Certificate2($FilePath)
+        }
+        
     }   
     end {
         $x509Cert

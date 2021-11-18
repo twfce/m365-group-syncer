@@ -1,2 +1,34 @@
 # m365-group-syncer
 A simple Azure Function to sync group members.
+
+# Testing
+## Example local.settings.json
+
+### Example with Azurite (Storage Account Emulator)
+```json
+{
+    "IsEncrypted": false,
+    "Values": {
+      "AzureWebJobsStorage": "DefaultEndpointsProtocol=http;AccountName=devstoreaccount1;AccountKey=Eby8vdM02xNOcqFlqUwJPLlmEtlCDXJ1OUzFT50uSRZ6IFsuFq2UVErCz4I6tq/K1SZFPTOtr/KBHBeksoGMGw==;BlobEndpoint=http://127.0.0.1:10000/devstoreaccount1;QueueEndpoint=http://127.0.0.1:10001/devstoreaccount1;",
+      "FUNCTIONS_WORKER_RUNTIME_VERSION": "~7",
+      "FUNCTIONS_WORKER_RUNTIME": "powershell",
+      "STORAGE_TABLE_CONNECTION": "DefaultEndpointsProtocol=http;AccountName=devstoreaccount1;AccountKey=Eby8vdM02xNOcqFlqUwJPLlmEtlCDXJ1OUzFT50uSRZ6IFsuFq2UVErCz4I6tq/K1SZFPTOtr/KBHBeksoGMGw==;TableEndpoint=http://127.0.0.1:10002/devstoreaccount1;",
+      "GROUP_MAPPINGS_TABLE_NAME": "groupMappings",
+      "INSERT_TEST_MAPPING": true,
+      "AUTH_TENANT_ID": "",
+      "AUTH_CLIENT_ID": "",
+      "AUTH_CERTIFICATE_FILE": "m365-group-syncer.pfx"
+    }
+}
+  
+  
+```
+
+## Creating a certificate to test Graph authentication
+```bash
+# Creating a self signed certificate
+openssl genrsa -out m365-group-syncer.pem 2048
+openssl req -new -key m365-group-syncer.pem -out m365-group-syncer.csr
+openssl x509 -req -days 365 -in m365-group-syncer.csr -signkey m365-group-syncer.pem -out m365-group-syncer.crt
+openssl pkcs12 -export -out m365-group-syncer.pfx -inkey m365-group-syncer.pem -in m365-group-syncer.crt
+```

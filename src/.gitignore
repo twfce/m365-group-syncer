@@ -12,3 +12,7 @@ __azurite_db*__.json
 
 # Custom
 modules/*
+*.crt
+*.csr
+*.pem
+*.pfx
