@@ -22,13 +22,11 @@
 # You can also define functions or aliases that can be referenced in any of your PowerShell functions.
 
 # Import required modules
-Get-ChildItem -Path "$PSScriptRoot\modules" -Directory | Foreach-Object {
-    Write-Host "Importing $($_.Name)"
-    Import-Module $_.FullName -Force
-}
+Import-Module Az.Storage
+Import-Module AzTable
 
 # Import library
 Get-ChildItem -Path "$PSScriptRoot\lib" -Filter "*.psm1" | Foreach-Object {
     Write-Host "Importing $($_.Name)"
-    Import-Module $_.FullName -Force
+    Import-Module $_.FullName -Force -DisableNameChecking
 }

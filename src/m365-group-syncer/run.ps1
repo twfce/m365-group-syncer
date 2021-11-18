@@ -4,23 +4,8 @@ param($Timer)
 # Get the current universal time in the default string format
 $currentUTCtime = (Get-Date).ToUniversalTime()
 
-# The 'IsPastDue' porperty is 'true' when the current function invocation is later than scheduled.
-if ($Timer.IsPastDue) {
-    Write-Host "PowerShell timer is running late!"
+$groupMappingsTable = Prepare-StorageTable -TableName $env:GROUP_MAPPINGS_TABLE_NAME -ConnectionString $env:STORAGE_TABLE_CONNECTION -CreateTableIfNotExists
+$groupMappings = Get-AzTableRow -table $groupMappingsTable
+$groupMappings | Foreach-Object -Parallel {
+    $_
 }
-
-# Write an information log with the current time.
-Write-Host "PowerShell timer trigger function ran! TIME: $currentUTCtime"
-
-Get-Module
-#$storageTableCtx = New-AzStorageContext -ConnectionString $env:AzureWebJobsStorage
-#$storageTableCtx
-
-<#
-try {
-    Get-AzStorageTable -Name $env:GROUP_MAPPINGS_TABLE_NAME -Context $storageTableCtx
-}
-catch {
-    New-AzStorageContext $env:GROUP_MAPPINGS_TABLE_NAME -Context $storageTableCtx
-}
-#>
