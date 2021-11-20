@@ -40,7 +40,7 @@ function Invoke-GroupMappingTestData {
 function Get-GroupMembers {
     Param (
         [string] $GroupId
-    )    
+    )
 
     $cache = @()
     $request = Invoke-MgGraphRequest -Method GET -Uri "v1.0/groups/$GroupId/members"
@@ -54,8 +54,33 @@ function Get-GroupMembers {
         }
     } while ($true)
 
-    $members = $cache | Select-Object @{n = "id"; e = { $_["id"] }}
+    $members = $cache | Select-Object @{n = "id"; e = { $_.id }}
     return $members
+}
+
+function New-MemberManagerAction {
+    Param (
+        [Parameter(Mandatory = $true)]
+        [string] $TargetGroupId,
+        [Parameter(Mandatory = $true)]
+        [string[]] $Members,
+        [Parameter(Mandatory = $true)]
+        [ValidateSet("Add", "Remove")]
+        [string] $Action,
+        [Parameter(Mandatory = $true)]
+        [Microsoft.Azure.Storage.Queue.CloudQueue] $Queue
+    )
+
+    begin {
+        $message = @{
+            "targetGroupId" = $TargetGroupId
+            "memberIds" = $Members
+            "action" = $Action
+        } | ConvertTo-Json
+    }
+    process {
+        $Queue.AddMessageAsync([Microsoft.Azure.Storage.Queue.CloudQueueMessage]::new($message))
+    }
 }
 
 Export-ModuleMember -Function *

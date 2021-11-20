@@ -69,4 +69,35 @@ function Prepare-StorageTable {
     }    
 }
 
+function Prepare-StorageQueue {
+    Param (
+        [Parameter(Mandatory = $true)]
+        [string] $QueueName,
+        [switch] $CreateQueueIfNotExists,
+        [Parameter(Mandatory = $true)]
+        [string] $ConnectionString
+    )
+
+    $storageQueueCtx = New-AzStorageContext -ConnectionString $ConnectionString
+    if (-Not (Get-AzStorageQueue -Name $QueueName -Context $storageQueueCtx -ErrorAction SilentlyContinue)) {
+        Write-Host "[Prepare-StorageTable] Table $QueueName does not exist."
+        if ($CreateQueueIfNotExists) {
+            Write-Host "[Prepare-StorageTable] Creating empty table"
+            return (New-AzStorageQueue -Name $QueueName -Context $storageQueueCtx).CloudQueue
+        }        
+    }
+    else {
+        return (Get-AzStorageQueue -Name $QueueName -Context $storageQueueCtx).CloudQueue
+    }    
+}
+
+function Test-GraphConnection
+{	
+	process
+	{
+		if (Get-MgContext) { return $true }
+        else { return $false }		
+	}
+}
+
 Export-ModuleMember -Function *
