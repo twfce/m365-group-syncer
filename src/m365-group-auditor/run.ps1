@@ -14,11 +14,11 @@ if ($env:INSERT_TEST_MAPPING) {
 }
 
 Get-AzTableRowAll -table $groupMappingsTable | Foreach-Object {    
-    $targetGroup = Get-MgGroup -Filter "displayName eq '$($_.RowKey)'"
+    $targetGroup = Get-MgGroup -Filter "displayName eq '$($_.RowKey)'" | Select-Object id, displayName, mail, mailEnabled, SecurityEnabled
     if ($targetGroup.count -gt 1) {
         throw "[$($_.RowKey)] Too many groups returned. Cannot determine which group to use"
         continue
-    }
+    }    
     $currentMembers = Get-GroupMembers -GroupId $targetGroup.Id
 
     Write-Host "[$($_.RowKey)] Found group in Azure AD"
@@ -31,13 +31,13 @@ Get-AzTableRowAll -table $groupMappingsTable | Foreach-Object {
     if ($currentMembers.count -gt 0) {
         $compare = Compare-Object -ReferenceObject $currentMembers.id -DifferenceObject $sourceMembers.id
         if ($compare.SideIndicator -contains "=>") {
-            New-MemberManagerAction -TargetGroupId $targetGroup.id -Members ($compare | Where-Object {$_.SideIndicator -eq "=>"}).InputObject -Action "Add" -Queue $memberManagerQueue
+            New-MemberManagerAction -TargetGroup $targetGroup -Members ($compare | Where-Object {$_.SideIndicator -eq "=>"}).InputObject -Action "Add" -Queue $memberManagerQueue -API (Get-GroupMemberApi -Group $targetGroup)
         }
         if ($compare.SideIndicator -contains "<=") {
-            New-MemberManagerAction -TargetGroupId $targetGroup.id -Members ($compare | Where-Object {$_.SideIndicator -eq "<="}).InputObject -Action "Remove" -Queue $memberManagerQueue
+            New-MemberManagerAction -TargetGroup $targetGroup -Members ($compare | Where-Object {$_.SideIndicator -eq "<="}).InputObject -Action "Remove" -Queue $memberManagerQueue -API (Get-GroupMemberApi -Group $targetGroup)
         }
     }
     else {
-        New-MemberManagerAction -TargetGroupId $targetGroup.id -Members $sourceGroups.id -Action "Add" -Queue $memberManagerQueue
+        New-MemberManagerAction -TargetGroup $targetGroup -Members $sourceMembers.id -Action "Add" -Queue $memberManagerQueue -API (Get-GroupMemberApi -Group $targetGroup)
     }    
 }

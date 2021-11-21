@@ -58,24 +58,41 @@ function Get-GroupMembers {
     return $members
 }
 
+function Get-GroupMemberApi {
+    Param (
+        [Parameter(Mandatory = $true)]
+        $Group
+    )
+
+    process {
+        if ($Group.securityEnabled -and $Group.mailEnabled) {
+            return "ExO"
+        }
+        return "Graph"
+    }
+}
+
 function New-MemberManagerAction {
     Param (
         [Parameter(Mandatory = $true)]
-        [string] $TargetGroupId,
+        $TargetGroup,
         [Parameter(Mandatory = $true)]
         [string[]] $Members,
         [Parameter(Mandatory = $true)]
         [ValidateSet("Add", "Remove")]
         [string] $Action,
+        [ValidateSet("ExO", "Graph")]
+        [string] $API = "Graph",
         [Parameter(Mandatory = $true)]
         [Microsoft.Azure.Storage.Queue.CloudQueue] $Queue
     )
 
     begin {
         $message = @{
-            "targetGroupId" = $TargetGroupId
+            "targetGroup" = $TargetGroup
             "memberIds" = $Members
             "action" = $Action
+            "api" = $API
         } | ConvertTo-Json
     }
     process {
