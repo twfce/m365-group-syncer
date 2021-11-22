@@ -1,4 +1,4 @@
-<mxfile modified="2021-11-22T11:22:25.965Z" host="app.diagrams.net" agent="5.0 (Windows)" etag="0KILbAGuI6BAQOuYgEgO" version="15.8.3" type="github">
+<mxfile modified="2021-11-22T11:24:31.045Z" host="app.diagrams.net" agent="5.0 (Windows)" etag="wHqAsg52FAng8aWUxM1j" version="15.8.3" type="github">
   <diagram id="WI9T0HZ2pTsCkuznbFz-" name="Page-1">
     <mxGraphModel dx="1279" dy="1610" grid="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="1169" pageHeight="827" math="0" shadow="0">
       <root>
@@ -116,7 +116,7 @@
             <mxPoint x="19" as="offset" />
           </mxGeometry>
         </mxCell>
-        <mxCell id="KlGYiTTnakiXN_3A1EwZ-58" value="&lt;div&gt;microsoft365-member manager&lt;br&gt;&lt;/div&gt;&lt;div&gt;Azure Queue Trigger Function&lt;br&gt;&lt;/div&gt;" style="aspect=fixed;html=1;points=[];align=center;image;fontSize=12;image=img/lib/azure2/compute/Function_Apps.svg;" parent="KlGYiTTnakiXN_3A1EwZ-2" vertex="1">
+        <mxCell id="KlGYiTTnakiXN_3A1EwZ-58" value="&lt;div&gt;microsoft365-member-manager&lt;br&gt;&lt;/div&gt;&lt;div&gt;Azure Queue Trigger Function&lt;br&gt;&lt;/div&gt;" style="aspect=fixed;html=1;points=[];align=center;image;fontSize=12;image=img/lib/azure2/compute/Function_Apps.svg;" parent="KlGYiTTnakiXN_3A1EwZ-2" vertex="1">
           <mxGeometry x="385.25" y="450" width="68" height="60" as="geometry" />
         </mxCell>
         <mxCell id="KlGYiTTnakiXN_3A1EwZ-61" value="Microsoft Graph" style="sketch=0;aspect=fixed;html=1;points=[];align=left;image;fontSize=12;image=img/lib/mscae/Resource_Graph_Explorer.svg;strokeColor=default;fillColor=#4D4D4D;labelPosition=right;verticalLabelPosition=middle;verticalAlign=middle;" parent="KlGYiTTnakiXN_3A1EwZ-2" vertex="1">
