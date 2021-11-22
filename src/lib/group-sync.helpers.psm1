@@ -84,19 +84,35 @@ function New-MemberManagerAction {
         [ValidateSet("ExO", "Graph")]
         [string] $API = "Graph",
         [Parameter(Mandatory = $true)]
-        [Microsoft.Azure.Storage.Queue.CloudQueue] $Queue
+        [Microsoft.Azure.Storage.Queue.CloudQueue] $Queue,
+        [int] $MemberThreshold = 100
     )
 
     begin {
-        $message = @{
-            "targetGroup" = $TargetGroup
-            "memberIds" = $Members
-            "action" = $Action
-            "api" = $API
-        } | ConvertTo-Json
+        $messages = @()
+        if ($Members.count -gt $MemberThreshold) {
+            for ($i = 0; $i -lt $Members.length; $i = $i + $MemberThreshold) {
+                $messages += @{
+                    "targetGroup" = $TargetGroup
+                    "memberIds" = $Members[$i..($i + ($MemberThreshold - 1))]
+                    "action" = $Action
+                    "api" = $API
+                }
+            }    
+        }
+        else {
+            $messages += @{
+                "targetGroup" = $TargetGroup
+                "memberIds" = $Members
+                "action" = $Action
+                "api" = $API
+            }
+        }
     }
     process {
-        $Queue.AddMessageAsync([Microsoft.Azure.Storage.Queue.CloudQueueMessage]::new($message))
+        foreach ($message in $messages) {
+            $Queue.AddMessageAsync([Microsoft.Azure.Storage.Queue.CloudQueueMessage]::new($($message | ConvertTo-Json -Compress)))
+        }
     }
 }
 

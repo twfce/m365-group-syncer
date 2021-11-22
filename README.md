@@ -5,6 +5,7 @@ A simple Azure Function to sync group members.
   - [Example local.settings.json](#example-localsettingsjson)
     - [Example with Azurite (Storage Account Emulator)](#example-with-azurite-storage-account-emulator)
   - [Example m365-member-manager queue message](#example-m365-member-manager-queue-message)
+  - [Creating test users](#creating-test-users)
   - [Creating a certificate to test Graph authentication](#creating-a-certificate-to-test-graph-authentication)
 
 # Overview
@@ -43,6 +44,17 @@ A simple Azure Function to sync group members.
   "targetGroupId": "fb9236f1-ef54-401c-96bf-d43108ecb0b9"
 }
 
+```
+
+## Creating test users
+```powershell
+1..100 | Foreach-Object -Parallel {
+      Import-Module ./lib/general.helpers.psm1
+      $crt = Prepare-Certificate -FilePath ./m365-group-syncer.pfx
+      Connect-MgGraph -ClientId 84b9a4f3-840f-4730-9b16-a99983551502 -TenantId 033b89c5-cf4b-4403-b0c7-69918830d2eb -Certificate $crt
+      $PasswordProfile = @{Password="Password1!#"}
+      New-MgUser -DisplayName "Test User $_" -UserPrincipalName "test$_@1fjcdg.onmicrosoft.com" -MailNickname "test$_" -PasswordProfile $PasswordProfile -AccountEnable
+    } -ThrottleLimit 20
 ```
 
 ## Creating a certificate to test Graph authentication
