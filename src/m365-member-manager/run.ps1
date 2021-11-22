@@ -31,7 +31,7 @@ switch ($QueueItem["api"]) {
 foreach ($member in $QueueItem["memberIds"]) {
     switch ($QueueItem["action"]) {
         "Add" {
-            Write-Host "Adding $member to $($QueueItem["targetGroup"].Mail)" 
+            Write-Host "Adding $member to $($QueueItem["targetGroup"].Id)" 
             switch ($QueueItem["api"]) {
                 "ExO" {
                     Add-DistributionGroupMember -Identity $QueueItem["targetGroup"].Mail -Member $member -BypassSecurityGroupManagerCheck                }
@@ -41,7 +41,7 @@ foreach ($member in $QueueItem["memberIds"]) {
             }
         }
         "Remove" {
-            Write-Host "Removing $member from $($QueueItem["targetGroup"].Mail)"
+            Write-Host "Removing $member from $($QueueItem["targetGroup"].Id)"
             switch ($QueueItem["api"]) {
                "ExO" { 
                     Remove-DistributionGroupMember -Identity $QueueItem["targetGroup"].Mail -Member $member -BypassSecurityGroupManagerCheck -Confirm:$false
