@@ -1,5 +1,14 @@
-# m365-group-syncer
+# m365-group-syncer <!-- omit in toc -->
 A simple Azure Function to sync group members.
+- [Overview](#overview)
+- [Testing](#testing)
+  - [Example local.settings.json](#example-local.settings.json)
+    - [Example with Azurite (Storage Account Emulator)](#example-with-azurite-%28storage-account-emulator%29)
+  - [Example m365-member-manager queue message](#example-m365-member-manager-queue-message)
+  - [Creating a certificate to test Graph authentication](#creating-a-certificate-to-test-graph-authentication)
+
+# Overview
+![Overview image](docs/m365-group-syncer-overview.jpg)
 
 # Testing
 ## Example local.settings.json
