@@ -1,5 +1,8 @@
-# m365-group-syncer <!-- omit in toc -->
+
+<img src="docs/logo.svg" width=400 />
+
 A simple Azure Function to sync group members.
+
 - [Overview](#overview)
 - [Testing](#testing)
   - [Example local.settings.json](#example-localsettingsjson)
