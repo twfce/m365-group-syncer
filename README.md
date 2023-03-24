@@ -1,6 +1,8 @@
 
 <img src="docs/logo.svg" width=400 />
 
+> ⚠️ This is more of a PoC. Was nerver fully implemented. Would need some additional love. :) 
+
 A simple Azure Function to sync group members.
 
 - [Overview](#overview)
